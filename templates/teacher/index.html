@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<div>
+    <br>
+    <table class="table table-bordered table-primary">
+        <thead></thead>
+          <tr>
+            <th>number</th>
+            <th scope="col">monday</th>
+            <th scope="col">tuesday</th>
+            <th scope="col">wednesday</th>
+            <th scope="col">thirsday</th>
+            <th scope="col">friday</th>
+            <th scope="col">saturday</th>
+            <th scope="col">sunday</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for time in schedule %}
+                <tr>
+                    <th scope="row">{{loop.index0 + 1}}</th>
+                    {% for sub in time %}
+                        {% if sub == subject[0][0] %}
+                        <td class="table-warning">{{sub}}</td>
+                        {% else %}
+                        <td>{{sub}}</td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<br>
+<div style="margin-left: 80px; margin-right:80px;">
+    <table class="table table-bordered table-primary">
+        <tbody>
+            {% for student in students %}
+            <tr>
+            <th scope="row">{{student[0]}}</th>
+            <td>{{grades[student[0]]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

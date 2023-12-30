@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<div style="margin-left: 80px; margin-right:80px; margin-top: 20px">
+    <table class="table table-bordered table-primary">
+        <thead></thead>
+          <tr>
+            <th>number</th>
+            <th scope="col">monday</th>
+            <th scope="col">tuesday</th>
+            <th scope="col">wednesday</th>
+            <th scope="col">thirsday</th>
+            <th scope="col">friday</th>
+            <th scope="col">saturday</th>
+            <th scope="col">sunday</th>
+          </tr>
+        </thead>
+        <tbody>
+
+            {% for row in schedule %}
+                <tr>
+                    <th scope="row">{{loop.index0 + 1}}</th>
+                    <td>{{row.0}}</td>
+                    <td>{{row.1}}</td>
+                    <td>{{row.2}}</td>
+                    <td>{{row.3}}</td>
+                    <td>{{row.4}}</td>
+                    <td>{{row.5}}</td>
+                    <td>{{row.6}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

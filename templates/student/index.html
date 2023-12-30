@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<div style="margin-left: 80px; margin-right:80px; margin-top: 20px">
+    <br>
+
+    <h3 class="h3">Your current schedule</h3>
+
+    <button onclick="click" class="btn btn-info" style="float: left; margin-bottom: 30px" data-bs-toggle="modal" data-bs-target="#Modal">Why are some cells red?</button>
+
+    <table class="table table-bordered table-primary">
+        <thead></thead>
+          <tr>
+            <th>number</th>
+            <th scope="col">monday</th>
+            <th scope="col">tuesday</th>
+            <th scope="col">wednesday</th>
+            <th scope="col">thirsday</th>
+            <th scope="col">friday</th>
+            <th scope="col">saturday</th>
+            <th scope="col">sunday</th>
+          </tr>
+        </thead>
+        <tbody>
+
+            {% for time in schedule %}
+                <tr>
+                    <th scope="row">{{loop.index0 + 1}}</th>
+                    {% for sub in time %}
+                        {% if sub in bad_subjects %}
+                        <td class="table-danger">{{sub}}</td>
+                        {% else %}
+                        <td>{{sub}}</td>
+                        {% endif %}
+
+                    {% endfor %}
+                </tr>
+                
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <br>
+    <br>
+
+    <h3 class="h3">Your current grades</h3>
+
+    <table class="table table-bordered table-primary">
+      <thead>
+        <tr scope="col">
+          {% for obj in averege_grades %}
+          <th>{{obj}}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {% for obj in averege_grades %}
+          <td>{{averege_grades[obj]}}</td>
+          {% endfor %}
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="modal fade" id="Modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5">Red cells</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>the red cell on a table indecates that you have a grade for this subject below 4 (you should check-out your grades page)</p>
+            </div>
+          </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

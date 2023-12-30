@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<div style = "margin-top:40px">
+    <table class="table table-bordered">
+    <thead>
+        <th scope="col" style="width: 150px; word-wrap: break-word; font-size:130%"> name </th>
+        <th scope="col" style="width: 150px; word-wrap: break-word; font-size:130%"></thscope> averege </th>
+    </thead>
+    <tbody>
+    {% for subject in subjects %}
+        <tr>
+        <th scope="row" style="width: 150px; word-wrap: break-word;"> {{subject.0}} </th>
+        <th scope="row" style="width: 150px; word-wrap: break-word;"></thscope>{{averege[subject.0]}}</th>
+        {% for obj in grades %}
+        {% if obj.2 == subject.0 %}
+            <td>{{obj.0}}</td>
+        {% endif %}
+        {% endfor %}
+
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+</div>
+
+{% endblock %}

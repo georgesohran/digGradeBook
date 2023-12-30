@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<div class="container-fluid py-5 text-center">
+    <form action="/login" method="post">
+        <div class="mb3">
+            <input class="form-control mx-auto w-auto" name="name" placeholder="name" type="text"></input>
+        </div>
+        <div class="mb3">
+            <input class="form-control mx-auto w-auto" name="password" placeholder="password" type="password"></input>
+        </div>
+        <div class="mb3">
+            <select class="form-select mx-auto w-auto" name="type">
+                <option disabled selected> who are you? </option>
+                <option>teacher</option>
+                <option>student</option>
+            </select>
+        </div>
+        {% if messege != 'OK' %}
+        <p>{{messege}}</p>
+        {% endif %}
+        <button type="submit" class="btn btn-primary">Log in</button>
+    </form>
+</div>
+
+{% endblock %}
